@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduBoard – Student Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        }
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="" crossorigin="anonymous">
+</head>
+<body class="bg-gray-100 min-h-screen font-sans flex dark:bg-gray-800">
+    <nav class="w-64 bg-white dark:bg-black shadow-lg p-6 hidden md:flex flex-col fixed h-full">
+        <h2 class="text-2xl font-semibold text-blue-600 my-6 hover:text-blue-800 cursor-pointer">EduBoard</h2>
+        <ul class="cursor-pointer font-medium space-y-4 dark:text-white">
+            <li class="hover:text-blue-600">Dashboard</li>
+            <li class="hover:text-blue-600">Attendance</li>
+            <li class="hover:text-blue-600">Subjects</li>
+            <li class="hover:text-blue-600">Profile</li>
+            <li class="hover:text-blue-600">Settings</li>
+        </ul>
+    </nav>
+    <main class="p-4 md:p-10 flex-1 ml-0 md:ml-64">
+        <header class="flex justify-between bg-white dark:bg-black rounded-lg mb-8 p-4 shadow items-center">
+            <div>
+                <h1 class="text-xl md:text-2xl font-semibold mb-1 dark:text-white">Welcome, Dinesh</h1>
+                <p class="text-gray-500 text-sm dark:text-gray-300">Your academic overview</p>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button onclick="toggleTheme()" class="hover:bg-yellow-100 dark:hover:bg-gray-700 px-3 py-2 dark: px-3 dark:py-3 rounded-3xl hover:scale-105">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun dark:text-white hidden dark:block"></i>
+                </button>
+                <button class="hover:bg-yellow-100 dark:hover:bg-gray-700 px-3 py-2 rounded-3xl hover:scale-105">
+                    <i class="fas fa-bell text-lg dark:text-white"></i>
+                </button>
+                <span>
+                    <img src="./assets/profile.jpg" alt="Profile" class="rounded-full w-10 h-10" />
+                </span>
+            </div>
+        </header>
+
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            <div class="bg-white dark:bg-black rounded-lg p-6 shadow hover:scale-105">
+                <h3 class="text-gray-600 dark:text-gray-200 text-sm" >GPA</h3>
+                <p class="text-3xl font-bold text-blue-600 mt-2">9.0</p>
+            </div>
+            <div class="bg-white dark:bg-black rounded-lg p-6 shadow hover:scale-105">
+                <h3 class="text-gray-600 dark:text-gray-200 text-sm">Attendance</h3>
+                <p class="text-3xl font-bold text-blue-600 mt-2">92%</p>
+            </div>
+            <div class="bg-white dark:bg-black rounded-lg p-6 shadow hover:scale-105">
+                <h3 class="text-gray-600 dark:text-gray-200 text-sm">Assignments Due</h3>
+                <p class="text-3xl font-bold text-blue-600 mt-2">3</p>
+            </div>
+            <div class="bg-white dark:bg-black rounded-lg p-6 shadow hover:scale-105">
+                <h3 class="text-gray-600 dark:text-gray-200 text-sm">Total Credits</h3>
+                <p class="text-3xl font-bold text-blue-600 mt-2">25</p>
+            </div>
+        </section>
+
+        <section class="bg-white dark:bg-black shadow rounded-lg mb-8 p-6">
+            <h2 class="text-lg font-semibold mb-4 dark:text-white">Subject Progress</h2>
+            <table class="w-full text-left bg-blue-0">
+                <thead>
+                    <tr class="text-gray-600 border-b">
+                        <th class="py-2 dark:text-gray-200">Subject</th>
+                        <th class="py-2 dark:text-gray-200">Completion</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-700 ">
+                    <tr class="border-b">
+                        <td class="py-3 dark:text-gray-200">Mathematics</td>
+                        <td>
+                            <div class="bg-gray-200 w-full rounded-full">
+                                <div class="bg-blue-500 h-3 rounded-full" style="width: 80%;"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-3 dark:text-gray-200">Physics</td>
+                        <td>
+                            <div class="bg-gray-200 w-full rounded-full">
+                                <div class="bg-blue-500 h-3 rounded-full" style="width: 68%;"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-3 dark:text-gray-200">Computer Science</td>
+                        <td>
+                            <div class="bg-gray-200 w-full rounded-full">
+                                <div class="bg-blue-500 h-3 rounded-full" style="width: 90%;"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="bg-white dark:bg-black shadow rounded-lg mb-8 p-6">
+            <h2 class="text-lg font-semibold mb-4 dark:text-white">Upcoming Deadlines</h2>
+            <ul class="space-y-4">
+                <li class="border rounded-lg flex justify-between items-center bg-gray-50 p-4 dark:bg-gray-800">
+                    <span>
+                        <h4 class="font-medium dark:text-gray-200">Math Assignment</h4>
+                        <p class="text-gray-500 text-sm dark:text-gray-400">Algebra Chapter 4</p>
+                    </span>
+                    <span class="bg-blue-600 text-white rounded-full text-sm px-4 py-2">Dec 20</span>
+                </li>
+                <li class="border rounded-lg flex justify-between items-center bg-gray-50 p-4 dark:bg-gray-800">
+                    <span>
+                        <h4 class="font-medium dark:text-gray-200">Computer Science</h4>
+                        <p class="text-gray-500 text-sm dark:text-gray-400">Array Methods</p>
+                    </span>
+                    <span class="bg-blue-600 text-white rounded-full text-sm px-4 py-2">Dec 25</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="bg-white dark:bg-black rounded-lg shadow p-6 mb-12">
+            <h2 class="text-lg font-semibold mb-4 dark:text-white">Student Profile</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="flex">
+                    <img  src="./assets/profile.jpg" alt="Profile" class="rounded-full w-10 h-10 mr-5" />
+                    <span>
+                        <h3 class="text-md font-semibold dark:text-gray-300">Dinesh Jakka</h3>
+                        <p class="text-gray-500 text-sm dark:text-gray-400">Id No: B191675</p>
+                    </span>
+                </div>
+                <div>
+                    <h3 class="text-gray-500 dark:text-gray-400"><span class="font-medium text-black dark:text-gray-300">Email : </span>ddinesh.jakka@gamil.com</h3>
+                    <p class="text-gray-500 dark:text-gray-400"><span class="font-medium text-black dark:text-gray-300">Department: </span>ECE</p>
+                </div>
+                <div>
+                    <h3 class="text-gray-500 dark:text-gray-400"><span class="font-medium text-black dark:text-gray-300">College : </span>RGUKT Basar</h3>
+                    <p class="text-gray-500 dark:text-gray-400"><span class="font-medium text-black dark:text-gray-300">Year : </span>4th Year</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
